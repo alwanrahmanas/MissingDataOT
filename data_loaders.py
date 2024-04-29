@@ -9,7 +9,7 @@ import pandas as pd
 import wget
 
 
-DATASETS = ['iris', 'wine', 'boston', 'california', 'parkinsons', \
+DATASETS = ['iris', 'wine', 'california', 'parkinsons', \
             'climate_model_crashes', 'concrete_compression', \
             'yacht_hydrodynamics', 'airfoil_self_noise', \
             'connectionist_bench_sonar', 'ionosphere', 'qsar_biodegradation', \
@@ -44,8 +44,6 @@ def dataset_loader(dataset):
             X = load_iris()['data']
         elif dataset == 'wine':
             X = load_wine()['data']
-        elif dataset == 'boston':
-            X = load_boston()['data']
         elif dataset == 'california':
             X = fetch_california_housing()['data']
         elif dataset == 'parkinsons':
