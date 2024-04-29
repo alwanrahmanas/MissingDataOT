@@ -17,27 +17,23 @@ def nanmean(v, *args, **kwargs):
 
 
 #### Quantile ######
-def quantile(X, q, dim=None):
+def quantile(X, q, dim):
     """
-    Returns the q-th quantile.
+    Estimate the q-th quantile of a batch of samples.
 
-    Parameters
-    ----------
-    X : torch.DoubleTensor or torch.cuda.DoubleTensor, shape (n, d)
-        Input data.
+    Args:
+        X (Tensor): Batch of samples.
+        q (float): Quantile to estimate, between 0 and 1.
+        dim (int): Dimension along which to compute the quantile.
 
-    q : float
-        Quantile level (starting from lower values).
-
-    dim : int or None, default = None
-        Dimension allong which to compute quantiles. If None, the tensor is flattened and one value is returned.
-
-
-    Returns
-    -------
-        quantiles : torch.DoubleTensor
-
+    Returns:
+        Tensor: Estimated quantile.
     """
+    # Check if the input tensor has zero size along the specified dimension
+    if X.size(dim) == 0:
+        raise ValueError("Dimension dim has zero size")
+
+    # Compute the quantile using kthvalue
     return X.kthvalue(int(q * len(X)), dim=dim)[0]
 
 
