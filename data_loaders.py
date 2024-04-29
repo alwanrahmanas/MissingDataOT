@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from sklearn.datasets import load_iris, load_wine, load_boston, fetch_california_housing
+from sklearn.datasets import load_iris, load_wine, fetch_california_housing
 
 import os
 import pandas as pd
